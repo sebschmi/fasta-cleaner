@@ -86,7 +86,14 @@ fn main() {
     let mut input = BufReader::new(File::open(&config.input).unwrap());
     info!("Opening output file: {:?}", config.output);
     let mut output = BufWriter::new(File::create(&config.output).unwrap());
+
+    info!("Cleaning...");
     clean_fasta_file(&mut input, &mut output);
+
+    // Manually calling drop here to ensure that "Done." is only printed after the files flushed and closed.
+    drop(input);
+    drop(output);
+    info!("Done.");
 }
 
 fn clean_fasta_file(mut input: impl Read, mut output: impl Write) {
