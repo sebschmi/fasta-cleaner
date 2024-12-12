@@ -1,0 +1,12 @@
+[package]
+name = "fasta-cleaner"
+description = "Transform fasta files by upper-casing all sequence characters and removing non-ACGT sequence characters."
+authors = ["Sebastian Schmidt <sebastian.schmidt@helsinki.fi>"]
+version = "0.0.0"
+edition = "2021"
+license = "BSD-2-Clause"
+
+[dependencies]
+log = "0.4.22"
+simplelog = "0.12.2"
+clap = { version = "4.5.23", features = ["derive"] }
